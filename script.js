@@ -182,6 +182,7 @@ function IDtoPlayers(IDs) {
   var checkCheats = document.getElementById("cheatFilter").checked;
   let loadProgress = 0
   let startTime = performance.now()
+  let totalElapsedTime = 0
   for (let ID = 0; ID < IDs.length; ID++) {
     try {
       fetcH = fetch("https://api.dashcraft.io/trackv2/" + IDs[ID] + "?", {
