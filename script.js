@@ -177,8 +177,11 @@ function wrCount(countAll) {
 }
 
 function IDtoPlayers(IDs) {
+  const IDCount = IDs.length
   var fetches = [];
   var checkCheats = document.getElementById("cheatFilter").checked;
+  let loadProgress = 0
+  let startTime = performance.now()
   for (let ID = 0; ID < IDs.length; ID++) {
     try {
       fetcH = fetch("https://api.dashcraft.io/trackv2/" + IDs[ID] + "?", {
@@ -187,6 +190,16 @@ function IDtoPlayers(IDs) {
                    }})
        .then((response) => response.json())
        .then((json) => {
+           loadProgress++;
+                    const percentageComplete = (loadProgress / IDCount) * 100;
+                    const elapsedTime = (performance.now() - startTime) / 1000;
+                    totalElapsedTime += elapsedTime;
+
+                    let remainingTime = (100 - percentageComplete) * (totalElapsedTime / percentageComplete); // IN TEN MILISECONDS
+         
+                    loadCounter.innerHTML = `loading... ${percentageComplete.toFixed(3)}% <br> (${loadProgress}/${IDCount}) | Remaining Time: ${remainingTime.toFixed()} seconds`;
+             
+         
           jsonLB = json.leaderboard;
           var trackName = json.name;
           if (trackName == "") {
