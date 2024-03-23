@@ -183,6 +183,8 @@ function IDtoPlayers(IDs) {
   let loadProgress = 0
   let startTime = performance.now()
   let totalElapsedTime = 0
+   var loadCounter = document.getElementById("loadingNum");
+       
   for (let ID = 0; ID < IDs.length; ID++) {
     try {
       fetcH = fetch("https://api.dashcraft.io/trackv2/" + IDs[ID] + "?", {
