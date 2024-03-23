@@ -195,12 +195,7 @@ function IDtoPlayers(IDs) {
        .then((json) => {
            loadProgress++;
                     const percentageComplete = (loadProgress / IDCount) * 100;
-                    const elapsedTime = (performance.now() - startTime) / 1000;
-                    totalElapsedTime += elapsedTime;
-
-                    let remainingTime = (100 - percentageComplete) * (totalElapsedTime / percentageComplete); // IN TEN MILISECONDS
-         remainingTime = remainingTime/100
-                    loadCounter.innerHTML = `loading... ${percentageComplete.toFixed(3)}% <br> (${loadProgress}/${IDCount}) | Remaining Time: ${remainingTime.toFixed(2)} seconds`;
+                    loadCounter.innerHTML = `loading... ${percentageComplete.toFixed(3)}% <br> (${loadProgress}/${IDCount})`;
              
          
           jsonLB = json.leaderboard;
