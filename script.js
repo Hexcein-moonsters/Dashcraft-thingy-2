@@ -199,7 +199,7 @@ function IDtoPlayers(IDs) {
                     totalElapsedTime += elapsedTime;
 
                     let remainingTime = (100 - percentageComplete) * (totalElapsedTime / percentageComplete); // IN TEN MILISECONDS
-         
+         remainingTime = remainingTime/10000
                     loadCounter.innerHTML = `loading... ${percentageComplete.toFixed(3)}% <br> (${loadProgress}/${IDCount}) | Remaining Time: ${remainingTime.toFixed()} seconds`;
              
          
